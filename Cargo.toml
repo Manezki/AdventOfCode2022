@@ -1,7 +1,11 @@
 [package]
 name = "advent-of-code"
 version = "0.1.0"
+edition = "2018"
 
 [[bin]]
 name = "advent-of-code"
-path = "src/day-4.rs"
+path = "src/day-5.rs"
+
+[dependencies]
+regex = "1.7.0"

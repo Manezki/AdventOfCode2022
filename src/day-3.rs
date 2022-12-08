@@ -1,4 +1,4 @@
-use std::{path::Path, fs};
+use std::{fs, path::Path};
 
 fn item_priority(c: char) -> i64 {
     let priority;
@@ -11,32 +11,31 @@ fn item_priority(c: char) -> i64 {
         priority = c as u32 - 97 + 1;
     }
     assert!(priority <= 52);
-    return priority as i64
+    return priority as i64;
 }
 
 fn main() {
     let input_path = Path::new("inputs/day-3.txt");
-    let puzzle_input = fs::read_to_string(input_path).expect("Something went wrong reading the file");
+    let puzzle_input =
+        fs::read_to_string(input_path).expect("Something went wrong reading the file");
 
     let rucksacks = puzzle_input.split("\n");
     let compartments = rucksacks.clone().map(|sack| {
-        let compartment_size = sack.len()/2;
+        let compartment_size = sack.len() / 2;
         let (left, right) = sack.split_at(compartment_size);
-        return (left, right)
+        return (left, right);
     });
 
     let shared_items = compartments.map(|(l, r)| {
         for c in l.chars() {
             if r.contains(c) {
-                return c
+                return c;
             }
         }
         panic!("Could not find overlap between compartments");
     });
 
-    let puzzle_1_priority: i64 = shared_items.map(|item| {
-        return item_priority(item)
-    }).sum();
+    let puzzle_1_priority: i64 = shared_items.map(|item| return item_priority(item)).sum();
 
     println!("Puzzle 1 solution: {:#?}", puzzle_1_priority);
 
@@ -51,11 +50,14 @@ fn main() {
             if elf_2.unwrap().contains(c) {
                 if elf_3.unwrap().contains(c) {
                     badge_priorities.push(item_priority(c));
-                    break
+                    break;
                 }
             }
         }
     }
 
-    println!("Puzzle 2 solution: {:#?}", badge_priorities.iter().sum::<i64>());
+    println!(
+        "Puzzle 2 solution: {:#?}",
+        badge_priorities.iter().sum::<i64>()
+    );
 }

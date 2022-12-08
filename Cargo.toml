@@ -4,4 +4,4 @@ version = "0.1.0"
 
 [[bin]]
 name = "advent-of-code"
-path = "src/day-3.rs"
+path = "src/day-4.rs"

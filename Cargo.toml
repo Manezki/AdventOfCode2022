@@ -5,7 +5,7 @@ edition = "2018"
 
 [[bin]]
 name = "advent-of-code"
-path = "src/day-5.rs"
+path = "src/day-6.rs"
 
 [dependencies]
 regex = "1.7.0"
